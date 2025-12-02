@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs primaires - Orange/Rouge pour le thème food -->
+    <color name="primary">#FF5722</color>
+    <color name="primary_dark">#E64A19</color>
+    <color name="primary_light">#FFCCBC</color>
+    
+    <!-- Couleurs secondaires - Vert -->
+    <color name="secondary">#4CAF50</color>
+    <color name="secondary_dark">#388E3C</color>
+    <color name="secondary_light">#C8E6C9</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FFFBFE</color>
+    <color name="surface">#FFFBFE</color>
+    <color name="surface_variant">#F3DED7</color>
+    
+    <!-- Text colors -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_background">#1C1B1F</color>
+    <color name="on_surface">#1C1B1F</color>
+    <color name="on_surface_variant">#52443C</color>
+    
+    <!-- Error -->
+    <color name="error">#B3261E</color>
+    <color name="on_error">#FFFFFF</color>
+    
+    <!-- Outline -->
+    <color name="outline">#85736B</color>
+    
+    <!-- Dark theme colors -->
+    <color name="background_dark">#1C1B1F</color>
+    <color name="surface_dark">#1C1B1F</color>
+    <color name="on_background_dark">#E6E1E5</color>
+    <color name="on_surface_dark">#E6E1E5</color>
+</resources>
