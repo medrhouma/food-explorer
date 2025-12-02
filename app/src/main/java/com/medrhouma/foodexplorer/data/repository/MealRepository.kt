@@ -15,19 +15,26 @@ class MealRepository(
     private val apiService: MealApiService,
     private val mealDao: MealDao
 ) {
+    companion object {
+        /** Buffer supplémentaire de requêtes pour obtenir des recettes uniques */
+        private const val EXTRA_REQUESTS_BUFFER = 5
+        /** Nombre par défaut de recettes aléatoires */
+        private const val DEFAULT_RANDOM_COUNT = 10
+    }
+    
     // ==================== API Operations ====================
     
     /**
      * Récupère plusieurs recettes aléatoires depuis l'API
      * L'API ne retourne qu'une recette à la fois, donc on fait plusieurs appels
      */
-    suspend fun getRandomMeals(count: Int = 10): Result<List<Meal>> {
+    suspend fun getRandomMeals(count: Int = DEFAULT_RANDOM_COUNT): Result<List<Meal>> {
         return try {
             val meals = mutableListOf<Meal>()
             val seenIds = mutableSetOf<String>()
             
             // On fait plus d'appels pour avoir assez de recettes uniques
-            repeat(count + 5) {
+            repeat(count + EXTRA_REQUESTS_BUFFER) {
                 if (meals.size >= count) return@repeat
                 
                 val response = apiService.getRandomMeal()

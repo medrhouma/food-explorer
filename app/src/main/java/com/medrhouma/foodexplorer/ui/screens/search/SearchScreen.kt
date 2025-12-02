@@ -49,6 +49,8 @@ import com.medrhouma.foodexplorer.viewmodel.UiState
  * Écran de recherche de recettes
  * Permet la recherche par nom ou par ingrédient
  */
+private const val MIN_SEARCH_QUERY_LENGTH = 2
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
@@ -88,7 +90,7 @@ fun SearchScreen(
                     value = searchQuery,
                     onValueChange = { query ->
                         searchQuery = query
-                        if (query.length >= 2) {
+                        if (query.length >= MIN_SEARCH_QUERY_LENGTH) {
                             viewModel.searchMeals(query, searchByIngredient)
                         }
                     },
@@ -138,7 +140,7 @@ fun SearchScreen(
                         checked = searchByIngredient,
                         onCheckedChange = { isChecked ->
                             searchByIngredient = isChecked
-                            if (searchQuery.length >= 2) {
+                            if (searchQuery.length >= MIN_SEARCH_QUERY_LENGTH) {
                                 viewModel.searchMeals(searchQuery, isChecked)
                             }
                         },

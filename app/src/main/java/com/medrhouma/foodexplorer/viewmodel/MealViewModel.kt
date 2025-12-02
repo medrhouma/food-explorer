@@ -29,6 +29,11 @@ class MealViewModel(
     private val repository: MealRepository
 ) : ViewModel() {
     
+    companion object {
+        /** Nombre de recettes aléatoires à charger sur l'écran d'accueil */
+        private const val DEFAULT_RANDOM_MEALS_COUNT = 10
+    }
+    
     // ==================== États pour l'écran d'accueil ====================
     private val _randomMeals = MutableStateFlow<UiState<List<Meal>>>(UiState.Loading)
     val randomMeals: StateFlow<UiState<List<Meal>>> = _randomMeals.asStateFlow()
@@ -65,7 +70,7 @@ class MealViewModel(
     fun loadRandomMeals() {
         viewModelScope.launch {
             _randomMeals.value = UiState.Loading
-            repository.getRandomMeals(10).fold(
+            repository.getRandomMeals(DEFAULT_RANDOM_MEALS_COUNT).fold(
                 onSuccess = { meals ->
                     _randomMeals.value = UiState.Success(meals)
                 },
